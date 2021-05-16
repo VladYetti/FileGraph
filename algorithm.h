@@ -4,9 +4,10 @@
 
 #include <QFileInfo>
 #include <QString>
-#include <QStack>
-#include <QQueue>
+#include <stack>
+#include <queue>
 #include <QDir>
+#include <QDebug>
 
 class Algorithm
 {

@@ -4,11 +4,11 @@
 
 #include "algorithm.h"
 
-class Client
+class Client : public QObject
 {
 public:
-    Client(void);
-    Client(Algorithm* algorithm);
+    Client(QObject* parent = nullptr);
+    Client(Algorithm* algorithm, QObject* parent =nullptr);
     void setAlgorithm(Algorithm* algorithm);
     QString executeAlgorithm(QString currDir, QString currFile);
     ~Client(void);

@@ -4,20 +4,17 @@ BFSAlgorithm::BFSAlgorithm(void) {}
 
 QString BFSAlgorithm::search(QString currDir, QString currFile)
 {
-    QQueue<QString>q;
-    q.push_back(currDir);
-
+    std::queue<QString>q;
+    q.push(currDir);
     while(!q.empty())
     {
         QString tmp = q.front();
-        q.pop_front();
-
+        q.pop();
         QDir dir(tmp);
-        dir.setFilter(QDir::Dirs);
-
         for(auto&i: dir.entryInfoList())
         {
-            if(i.isDir()) q.push_back(i.absolutePath());
+            qDebug() << i.fileName();
+            if(i.isDir() && i.fileName() != "." && i.fileName() != "..") q.push(i.absoluteFilePath());
             else if(i.isFile() && i.fileName() == currFile) return i.absoluteFilePath();
         }
     }

@@ -1,8 +1,10 @@
 #include "client.h"
 
-Client::Client(void) : algorithm(nullptr){}
+Client::Client(QObject* parent) : QObject(parent) ,
+    algorithm(nullptr){}
 
-Client::Client(Algorithm *algorithm) : algorithm(algorithm) {}
+Client::Client(Algorithm *algorithm, QObject* parent) : QObject(parent),
+    algorithm(algorithm) {}
 
 void Client::setAlgorithm(Algorithm *algorithm)
 {
